@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const PORT = 3001;
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 app.listen(PORT, () => {
     console.log(`server is running at http://localhost:${PORT}`)
 })
@@ -25,5 +28,13 @@ app.get("/books/:id", async(req, res) => {
     }
 })
 // POST /books -> create book
+app.post("/books", async(req, res) => {
+    try {
+        const {name, description} = req.body;
+        res.status(200).json({message: `Books was created ${name}, ${description}`})
+    } catch (error) {
+        res.json({error: error.message})
+    }
+})
 // DELETE /books/:id -> delete a book
 // PUT /books/:id -> update a book
