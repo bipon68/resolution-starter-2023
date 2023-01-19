@@ -26,3 +26,5 @@ SELECT * FROM book WHERE id=101
 
 /* specific id delete*/
 DELETE FROM book WHERE id=101
+
+UPDATE book SET name="manikmia aveniew" WHERE id=102
