@@ -21,5 +21,8 @@ values
 select id, name, description
 SELECT * FROM book;
 
-/* specific id*/
+/* specific id select*/
 SELECT * FROM book WHERE id=101
+
+/* specific id delete*/
+DELETE FROM book WHERE id=101
