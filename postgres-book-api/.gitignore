@@ -5,7 +5,8 @@
 /postgres-book-api/node_modules
 
 #package lock
-/postgres-book-api/package-lock.json
+/package-lock.json
+
 
 /.pnp
 .pnp.js
