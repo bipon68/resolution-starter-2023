@@ -1,0 +1,11 @@
+Here's an example SQL query to generate a table called products with 4 columns (id, name, price, description):
+
+sql
+Copy code
+CREATE TABLE products (
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    price REAL,
+    description TEXT
+);
+This query will create a table named "products" with four columns: "id" (integer), "name" (text), "price" (real), and "description" (text). The "id" column is defined as the primary key, which means that each row in the table must have a unique "id" value.

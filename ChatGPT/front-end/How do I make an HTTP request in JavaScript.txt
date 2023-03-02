@@ -1,0 +1,54 @@
+You can make an HTTP request in JavaScript using the fetch() function or the XMLHttpRequest object.
+
+Here is an example using the fetch() function:
+
+javascript
+Copy code
+fetch('https://example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error))
+This code sends a GET request to https://example.com/data, receives the response, converts it to a JSON object using the json() method, and logs the data to the console. The catch() method is called if an error occurs during the request.
+
+Here is an example using the XMLHttpRequest object:
+
+javascript
+Copy code
+const xhr = new XMLHttpRequest();
+xhr.open('GET', 'https://example.com/data');
+xhr.onreadystatechange = function() {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    const data = JSON.parse(xhr.responseText);
+    console.log(data);
+  }
+};
+xhr.onerror = function() {
+  console.error('Error occurred during the request.');
+};
+xhr.send();
+This code creates a new XMLHttpRequest object, sets the request method and URL, and defines a callback function to be called when the response is received. The onerror callback is called if an error occurs during the request. Finally, the request is sent using the send() method.
+
+
+## using 'axois' Make HTTP call instead of fetch
+To make an HTTP call using Axios instead of fetch in JavaScript, you need to first install Axios via npm:
+
+Copy code
+npm install axios
+After installing Axios, you can import it into your JavaScript file and use it to make an HTTP call as shown below:
+
+javascript
+Copy code
+import axios from 'axios';
+
+axios.get('/api/products')
+  .then(function (response) {
+    // handle success
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  });
+In this example, we are using the get() method to make a GET request to the /api/products endpoint. The response from the server is handled in the then() method, while any errors are caught and handled in the catch() method.
+
+Axios also supports other HTTP methods such as post(), put(), delete(), and more. The syntax for making these calls is similar to the get() method.

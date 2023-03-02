@@ -1,0 +1,70 @@
+To use TypeScript in the following code, we can start by creating a TypeScript configuration file tsconfig.json in the root directory of the project. Here's an example configuration:
+
+json
+Copy code
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "strict": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"]
+    }
+  },
+  "include": ["src/**/*"]
+}
+Once we have the configuration file set up, we can start converting the code to TypeScript. Here's an example of how we can use TypeScript in the App.js file:
+
+javascript
+Copy code
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Product } from './types';
+
+function App() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    axios.get('/api/products')
+      .then(response => {
+        setProducts(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
+  return (
+    <div className="App">
+      <h1>Products</h1>
+      <ul>
+        {products.map(product => (
+          <li key={product.id}>
+            <h2>{product.title}</h2>
+            <p>{product.description}</p>
+            <p>{product.price}</p>
+            <img src={product.imageURL} alt={product.title} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+In this example, we imported the Product type from a separate types.ts file, which could look like this:
+
+typescript
+Copy code
+export interface Product {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  imageURL: string;
+}
+By using TypeScript, we can benefit from type checking and catch errors at compile time rather than runtime. This can help us write more robust and maintainable code.

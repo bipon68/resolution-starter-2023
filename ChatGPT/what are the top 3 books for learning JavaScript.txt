@@ -1,0 +1,7 @@
+As a language model, I don't have personal preferences, but here are three popular books that are highly recommended for learning JavaScript:
+
+"Eloquent JavaScript" by Marijn Haverbeke: This is a widely popular book that offers a comprehensive and in-depth guide to the JavaScript language. It covers a broad range of topics, including basic syntax, data types, functions, objects, and more.
+
+"JavaScript: The Good Parts" by Douglas Crockford: This book offers a concise and focused approach to learning JavaScript. It covers the essential parts of the language and explains how to use them effectively. It is ideal for those who want to learn JavaScript quickly and efficiently.
+
+"You Don't Know JS" by Kyle Simpson: This is a series of six books that cover different aspects of the JavaScript language. The books are written in a clear and accessible style and cover topics such as scope and closures, this and object prototypes, types and grammar, asynchronous and performance, ES6 and beyond, and testing and debugging. This series is great for those who want to dive deep into the language and gain a thorough understanding of its workings.

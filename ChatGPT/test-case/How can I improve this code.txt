@@ -1,0 +1,156 @@
+How can I improve this code?
+describe('Btn', () => {
+    it('renders a button', () => {
+        const btnProps: BTN_PROPS = {
+            BtnText: `Button`,
+            type: `button`,
+            onClick: () => vi.fn(),
+            disabled: false,
+            className: `btn`,
+            variant: `contained`,
+            size: `medium`,
+            isRounded: false,
+            btnRef: React.createRef(),
+            BtnStartIcon: <div>Start Icon</div>,
+            BtnEndIcon: <div>End Icon</div>
+        }
+        render(<Btn {...btnProps}/>);
+        expect(screen.getByRole('button')).toBeInTheDocument();
+    });
+    it('Should be able to render the button', () => {
+        const btnProps: BTN_PROPS = {
+            BtnText: `Click Me`,
+            type: `button`,
+            onClick: () => vi.fn(),
+            disabled: false,
+            className: `btn`,
+            variant: `contained`,
+            size: `medium`,
+            isRounded: false,
+            btnRef: React.createRef(),
+            BtnStartIcon: <div>Start Icon</div>,
+            BtnEndIcon: <div>End Icon</div>
+        }
+        render(<Btn {...btnProps}/>);
+        expect(screen.getByRole('button')).toHaveTextContent("Click Me");
+    });
+    it('Be able to fire the onClick event', () => {
+        const btnProps: BTN_PROPS = {
+            BtnText: `Click Me`,
+            type: `button`,
+            onClick: () => vi.fn(),
+            disabled: false,
+            className: `btn`,
+            variant: `contained`,
+            size: `medium`,
+            isRounded: false,
+            btnRef: React.createRef(),
+            BtnStartIcon: <div>Start Icon</div>,
+            BtnEndIcon: <div>End Icon</div>
+        }
+        render(<Btn {...btnProps}/>);
+        //const handleClick = vi.fn();
+        const {getByTestId} = render(<Btn {...btnProps}></Btn>);     
+        fireEvent.click(getByTestId(buttonTestID))
+        expect(screen.getByRole('button')).toHaveBeenCalledTimes(1);
+    });
+    it('Should be able to have default style', () => {
+        const btnProps: BTN_PROPS = {
+            BtnText: `Click Me`,
+            type: `button`,
+            onClick: () => vi.fn(),
+            disabled: false,
+            className: `btn`,
+            variant: `contained`,
+            size: `medium`,
+            isRounded: false,
+            btnRef: React.createRef(),
+            BtnStartIcon: <div>Start Icon</div>,
+            BtnEndIcon: <div>End Icon</div>
+        }
+        render(<Btn {...btnProps}/>);
+        expect(screen.getByRole('button')).toHaveStyle({
+            backgroundColor: "#000",
+            height: "40px",
+        })
+    });
+})
+
+
+Answer: 
+
+The code provided is already a unit test using Jest and React Testing Library to test a component called Btn. However, here are some tips on how to improve this code:
+
+Use more descriptive test names: The test names should be self-explanatory, so that the person reading the code knows exactly what each test is doing. For example, instead of it('renders a button'), you could write it('should render a button element').
+
+Use constants or variables for repeated values: There are several instances where the same BTN_PROPS object is being used. You could define this object as a constant or variable, so that it can be reused across all tests.
+
+Test for specific styles: Instead of testing for all styles, focus on testing the specific styles that are relevant to the component. For example, instead of testing for height: "40px", you could test for height: btnProps.size.
+
+Test edge cases: It's important to test edge cases, such as when BtnStartIcon or BtnEndIcon are not provided, or when disabled is set to true.
+
+Remove unnecessary code: There are some lines of code that are not being used, such as //const handleClick = vi.fn();. These should be removed to make the code cleaner and easier to read.
+
+Use fireEvent instead of getByTestId: Instead of using getByTestId(buttonTestID) to get the button element, you could use fireEvent.click(screen.getByRole('button')) to simulate a click event on the button.
+
+Here is an improved version of the code based on these tips:
+
+scss
+Copy code
+describe('Btn component', () => {
+  const btnProps = {
+    BtnText: 'Click Me',
+    type: 'button',
+    onClick: jest.fn(),
+    disabled: false,
+    className: 'btn',
+    variant: 'contained',
+    size: 'medium',
+    isRounded: false,
+    btnRef: React.createRef(),
+    BtnStartIcon: <div>Start Icon</div>,
+    BtnEndIcon: <div>End Icon</div>
+  };
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should render a button element', () => {
+    render(<Btn {...btnProps} />);
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
+
+  it('should render the button text', () => {
+    render(<Btn {...btnProps} />);
+    expect(screen.getByRole('button')).toHaveTextContent('Click Me');
+  });
+
+  it('should fire the onClick event when clicked', () => {
+    render(<Btn {...btnProps} />);
+    fireEvent.click(screen.getByRole('button'));
+    expect(btnProps.onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should have default styles', () => {
+    render(<Btn {...btnProps} />);
+    expect(screen.getByRole('button')).toHaveStyle({
+      backgroundColor: '#000',
+      height: btnProps.size,
+    });
+  });
+
+  it('should render without StartIcon', () => {
+    const propsWithoutStartIcon = { ...btnProps, BtnStartIcon: undefined };
+    render(<Btn {...propsWithoutStartIcon} />);
+    expect(screen.queryByText('Start Icon')).not.toBeInTheDocument();
+  });
+
+  it('should render without EndIcon', () => {
+    const propsWithoutEndIcon = { ...btnProps, BtnEndIcon: undefined };
+    render(<Btn {...propsWithoutEndIcon} />);
+    expect(screen.queryByText('End Icon')).not.toBeInTheDocument();
+  });
+
+  it('should be disabled when disabled prop is true', () => {
+    const propsWithDisabled = { ...btnProps, disabled: true

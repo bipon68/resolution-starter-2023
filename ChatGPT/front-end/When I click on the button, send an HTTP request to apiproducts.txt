@@ -1,0 +1,28 @@
+To send an HTTP request to /api/products when a button is clicked, you can use JavaScript and a library like axios to make the HTTP request. Here's an example code snippet that you can use:
+
+html
+Copy code
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Button Click HTTP Request</title>
+</head>
+<body>
+  <button id="myButton">Click me!</button>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const button = document.getElementById('myButton');
+    button.addEventListener('click', () => {
+      axios.get('/api/products')
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    });
+  </script>
+</body>
+</html>
+In this example, when the button with the ID "myButton" is clicked, an HTTP GET request is sent to /api/products using axios. The response data is logged to the console if the request is successful, and any errors are logged to the console if the request fails.

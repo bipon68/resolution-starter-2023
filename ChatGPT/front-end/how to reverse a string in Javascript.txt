@@ -1,0 +1,29 @@
+To reverse a string in JavaScript, you can use several methods. Here are some examples:
+
+Using the built-in split, reverse, and join methods:
+lua
+Copy code
+function reverseString(str) {
+  return str.split("").reverse().join("");
+}
+Using a for loop:
+rust
+Copy code
+function reverseString(str) {
+  let reversedStr = "";
+  for (let i = str.length - 1; i >= 0; i--) {
+    reversedStr += str[i];
+  }
+  return reversedStr;
+}
+Using recursion:
+python
+Copy code
+function reverseString(str) {
+  if (str === "") {
+    return "";
+  } else {
+    return reverseString(str.substr(1)) + str.charAt(0);
+  }
+}
+All of these functions will return the reversed version of the string passed as an argument.

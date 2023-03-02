@@ -1,0 +1,45 @@
+To retrieve products from a MongoDB database, you can modify the existing code by using a MongoDB driver such as Mongoose. Here's an example implementation:
+
+javascript
+Copy code
+const express = require('express');
+const mongoose = require('mongoose');
+
+const app = express();
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost/mydatabase', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+// Define product schema
+const productSchema = new mongoose.Schema({
+  id: Number,
+  title: String,
+  description: String,
+  price: Number,
+  imageURL: String,
+});
+
+// Create product model
+const Product = mongoose.model('Product', productSchema);
+
+// API endpoint to get list of products
+app.get('/api/products', async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.json(products);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+// Start the server
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});
+In this code, we first connect to the MongoDB database using Mongoose. We define a product schema and create a product model using that schema. Then, we define an API endpoint /api/products that retrieves all products from the database using the Product.find() method and returns them as JSON. Finally, we start the server on port 3000.
+
+Note that you will need to install the express and mongoose packages via npm for this code to work.

@@ -1,0 +1,34 @@
+Generate dummy data for a table called customers. Each customer should have an ID, first name, last name and city.
+
+const customers = [
+  { id: 1, firstName: "John", lastName: "Doe", city: "New York" },
+  { id: 2, firstName: "Jane", lastName: "Doe", city: "Los Angeles" },
+  { id: 3, firstName: "Bob", lastName: "Smith", city: "Chicago" },
+  { id: 4, firstName: "Alice", lastName: "Johnson", city: "Houston" },
+  { id: 5, firstName: "Michael", lastName: "Davis", city: "Dallas" },
+  { id: 6, firstName: "Samantha", lastName: "Wilson", city: "Miami" },
+  { id: 7, firstName: "David", lastName: "Lee", city: "San Francisco" },
+  { id: 8, firstName: "Emily", lastName: "Wang", city: "Seattle" },
+  { id: 9, firstName: "Jacob", lastName: "Chen", city: "Boston" },
+  { id: 10, firstName: "Olivia", lastName: "Kim", city: "Washington DC" }
+];
+
+create a JavaScript class for storing these objects 
+
+Sure, here's an example JavaScript class for storing customer objects:
+
+kotlin
+Copy code
+class Customer {
+  constructor(id, firstName, lastName, city) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.city = city;
+  }
+}
+
+// Example usage:
+const customer1 = new Customer(1, 'John', 'Doe', 'New York');
+const customer2 = new Customer(2, 'Jane', 'Doe', 'Los Angeles');
+This class takes in four parameters - id, firstName, lastName, and city - and creates a new Customer object with those values. You can create as many instances of this class as needed to store your customer data.

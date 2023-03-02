@@ -1,0 +1,22 @@
+Sure, here's an example React component for displaying a card:
+
+jsx
+Copy code
+import React from 'react';
+
+const Card = (props) => {
+  const { title, content, imageUrl } = props;
+
+  return (
+    <div className="card">
+      <img src={imageUrl} alt={title} />
+      <div className="card-content">
+        <h2>{title}</h2>
+        <p>{content}</p>
+      </div>
+    </div>
+  );
+};
+
+export default Card;
+This component takes in props for the title, content, and imageUrl of the card, and renders them in a simple layout with an image, title, and content text. You can style the card using CSS, or by passing in additional props for classes or styles.

@@ -1,0 +1,46 @@
+Sure, here's an example of how to modify the code to retrieve products from a PostgreSQL database using the pg module in Node.js:
+
+First, install the pg module:
+
+bash
+Copy code
+npm install pg
+Then, create a pool object to handle connections to the database:
+
+javascript
+Copy code
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'mydatabase',
+  password: 'mypassword',
+  port: 5432,
+});
+Replace the values for user, host, database, password, and port with the correct values for your database.
+
+Next, modify the route handler to retrieve the products from the database:
+
+javascript
+Copy code
+app.get('/api/products', (req, res) => {
+  pool.query('SELECT * FROM products', (err, result) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Error retrieving products from database');
+    } else {
+      const products = result.rows.map((row) => ({
+        id: row.id,
+        title: row.title,
+        description: row.description,
+        price: row.price,
+        imageURL: row.imageURL,
+      }));
+      res.json(products);
+    }
+  });
+});
+This code uses the query method of the pool object to execute a SQL query to retrieve all rows from the products table. It then maps each row to a product object with the desired attributes and sends the resulting array of products as a JSON response.
+
+Don't forget to handle errors appropriately, such as sending a 500 status code and error message if there is an error executing the SQL query.

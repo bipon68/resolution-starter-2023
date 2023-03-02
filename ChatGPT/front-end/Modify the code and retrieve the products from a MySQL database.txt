@@ -1,0 +1,32 @@
+To retrieve the products from a MySQL database, you will need to install the mysql package using npm:
+
+Copy code
+npm install mysql
+Then you can create a connection to the database and retrieve the products using the following code:
+
+js
+Copy code
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'your_database_user',
+  password: 'your_database_password',
+  database: 'your_database_name'
+});
+
+connection.connect();
+
+app.get('/api/products', (req, res) => {
+  connection.query('SELECT * FROM products', (error, results, fields) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send('Error retrieving products from database');
+    } else {
+      res.send(results);
+    }
+  });
+});
+
+connection.end();
+This assumes that you have a products table in your MySQL database with columns for ID, title, description, price, and imageURL. You will need to replace the database connection details with your own, and modify the SQL query if your table or column names are different.

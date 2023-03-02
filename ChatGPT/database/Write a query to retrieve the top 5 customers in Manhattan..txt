@@ -1,0 +1,20 @@
+Assuming there is a "customers" table with columns "id", "name", "city", and "state", and a "orders" table with columns "id", "customer_id", and "order_total", and the "customers" table has a foreign key reference to the "orders" table via the "customer_id" column:
+
+sql
+Copy code
+SELECT customers.id, customers.name, SUM(orders.order_total) as total_spent
+FROM customers
+JOIN orders ON customers.id = orders.customer_id
+WHERE customers.city = 'Manhattan' AND customers.state = 'NY'
+GROUP BY customers.id, customers.name
+ORDER BY total_spent DESC
+LIMIT 5;
+This query joins the "customers" and "orders" tables based on the "customer_id" column, then selects the top 5 customers in Manhattan based on their total spending across all orders. The results are grouped by customer ID and name, sorted by total spending in descending order, and limited to the top 5 rows.
+
+OR, 
+
+SELECT name, address
+FROM customers
+WHERE city 'Manhattan'
+ORDER BY id DESC
+LIMIT 5

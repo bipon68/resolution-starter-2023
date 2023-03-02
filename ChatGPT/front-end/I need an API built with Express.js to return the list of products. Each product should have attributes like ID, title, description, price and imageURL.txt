@@ -1,0 +1,48 @@
+Sure, here's an example Express.js API that returns a list of products with attributes such as ID, title, description, price, and imageURL:
+
+javascript
+Copy code
+const express = require('express');
+const app = express();
+
+// Example products data
+const products = [
+  {
+    id: 1,
+    title: 'Product 1',
+    description: 'This is the description for product 1',
+    price: 9.99,
+    imageURL: 'https://example.com/product1.jpg'
+  },
+  {
+    id: 2,
+    title: 'Product 2',
+    description: 'This is the description for product 2',
+    price: 19.99,
+    imageURL: 'https://example.com/product2.jpg'
+  },
+  {
+    id: 3,
+    title: 'Product 3',
+    description: 'This is the description for product 3',
+    price: 29.99,
+    imageURL: 'https://example.com/product3.jpg'
+  }
+];
+
+// Route to get all products
+app.get('/api/products', (req, res) => {
+  res.json(products);
+});
+
+// Start server
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
+});
+To run this API, you'll need to install the Express.js package and run the script using a tool like nodemon or node.
+
+css
+Copy code
+npm install express --save
+nodemon index.js
+This will start the server on port 3000 and allow you to access the API at http://localhost:3000/api/products.

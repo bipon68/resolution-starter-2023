@@ -1,0 +1,20 @@
+#Act as a technical interviewer and ask me 10 question about JavaScript 
+
+Sure! Here are 10 technical interview questions about JavaScript:
+
+What is JavaScript, and what are some of its key features?
+What is the difference between undefined and null in JavaScript?
+What are closures in JavaScript, and how can they be used to improve code?
+How does the keyword "this" work in JavaScript, and can you give an example of how it might be used in a project?
+What is event bubbling, and how can it be prevented in JavaScript?
+How does prototypal inheritance work in JavaScript, and how is it different from classical inheritance in other programming languages?
+What is the difference between let, var, and const in JavaScript, and when might you use each one?
+Can you explain the difference between synchronous and asynchronous code in JavaScript, and how it relates to callbacks and promises?
+What is the purpose of using the "use strict" directive in JavaScript code, and what are some of its benefits?
+Can you explain the difference between "==" and "===" in JavaScript, and when you might use one over the other?
+These questions cover a range of topics in JavaScript, including key language features, object-oriented concepts, scope and closures, as well as more advanced topics like event bubbling and prototypal inheritance. I hope they help you prepare for your technical interview!
+
+# What is the answer to the first question?
+Sure, the answer to the first question is:
+
+JavaScript is a high-level, dynamic, and interpreted programming language that is commonly used for building interactive web applications. Some of its key features include its ability to manipulate the Document Object Model (DOM) to create dynamic HTML pages, its support for functional programming paradigms, and its use of event-driven programming to respond to user interactions on the web page. JavaScript is often used in conjunction with HTML and CSS to build responsive, modern web applications.

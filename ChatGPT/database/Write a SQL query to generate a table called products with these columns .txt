@@ -1,0 +1,12 @@
+Here is a SQL query to create a table called products with the specified columns:
+
+sql
+Copy code
+CREATE TABLE products (
+  id INT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  category INT NOT NULL,
+  unitPrice FLOAT NOT NULL,
+  imageUrl VARCHAR(255) NOT NULL
+);
+This query creates a table with 5 columns: id, title, category, unitPrice, and imageUrl. The id column is set as the primary key of the table. The title, category, unitPrice, and imageUrl columns are all set as not null, meaning they must have a value when a new row is inserted into the table.
